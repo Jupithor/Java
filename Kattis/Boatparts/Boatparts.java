@@ -26,9 +26,7 @@ public class Boatparts {
                     break;
                 }
             }
-            
         }
-
         if(uniqueParts.size()==iParts){
             System.out.println(iDay);
         }else{
