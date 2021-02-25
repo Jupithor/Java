@@ -7,9 +7,7 @@ public class SecureDoors {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int entries = sc.nextInt();
-        boolean anomaly = false;
         var protocol = new HashMap<String, String>();
-        String currentStatus;
         String newStatus;
         String name;
 
@@ -17,37 +15,17 @@ public class SecureDoors {
             newStatus = new String(sc.next());
             name = new String(sc.next());
             
-            if (protocol.containsKey(name)) {
-                currentStatus = protocol.get(name);
-                if (currentStatus.equals(newStatus)) {
-                    anomaly = true;
-                } else {
-                    protocol.replace(name, currentStatus, newStatus);
-                    anomaly = false;
-                }
-            } else {
-                protocol.put(name, newStatus);
-                if (newStatus.equals("exit")) {
-                    anomaly = true;
-                } else {
-                    anomaly = false;
-                }
+            if (newStatus.equals("entry") ){
+                newStatus = "entered";
+            }else{
+                newStatus = "exited";
             }
-
-            if (protocol.get(name).equals("entry")) {
-                if (anomaly == true) {
-                    System.out.println(name + " entered (ANOMALY)");
-                } else {
-                    System.out.println(name + " entered");
-                }
-            } else {
-                if (anomaly == true) {
-                    System.out.println(name + " exited (ANOMALY)");
-                } else {
-                    System.out.println(name + " exited");
-                }
+            if ((!protocol.containsKey(name) && newStatus.equals("exited")) || (protocol.containsKey(name) && protocol.get(name).equals(newStatus))) {
+                System.out.println(name+" "+newStatus+" (ANOMALY)");
+            }else{
+                System.out.println(name+" "+newStatus);
             }
-          anomaly = false;  
+            protocol.put(name,newStatus);
         }
         sc.close();
     }
