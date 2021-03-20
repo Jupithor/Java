@@ -1,0 +1,29 @@
+//https://open.kattis.com/problems/symmetricorder
+import java.util.*;
+
+public class SymmetricOrder{
+
+     public static void main(String[] args){
+        Scanner input = new Scanner("7        Bo        Pat        Jean        Kevin        Claude        William        Marybeth        6        Jim        Ben        Zoe        Joey        Frederick        Annabelle        5        John        Bill        Fran        Stan        Cece        0");
+        int num = input.nextInt();
+        int set = 1;
+        while (num != 0){
+            System.out.println("SET " + set);
+            int control = num;
+            String[] names = new String[num];
+            for (int i = 0; i < num / 2; i++){
+                names[i] = input.next();
+                names[control - 1] = input.next();
+                control--;
+            }
+            if (num % 2 != 0) {
+                names[(num / 2)]= input.next();
+            }
+            for (int i = 0; i < names.length; i++) {
+                System.out.println(names[i]);
+            }
+            num = input.nextInt();
+            set++;
+        }
+     }
+}
