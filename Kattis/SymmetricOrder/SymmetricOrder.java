@@ -4,7 +4,7 @@ import java.util.*;
 public class SymmetricOrder{
 
      public static void main(String[] args){
-        Scanner input = new Scanner("7        Bo        Pat        Jean        Kevin        Claude        William        Marybeth        6        Jim        Ben        Zoe        Joey        Frederick        Annabelle        5        John        Bill        Fran        Stan        Cece        0");
+        Scanner input = new Scanner(System.in);
         int num = input.nextInt();
         int set = 1;
         while (num != 0){
